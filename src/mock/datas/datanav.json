@@ -19,7 +19,8 @@
       "level": null,
       "name": "推荐专区",
       "showIndex": 9,
-      "subCateList": [{
+      "subCateList": [
+        {
         "bannerUrl": "http://yanxuan.nosdn.127.net/1fa42bd292337aaaf80612b6e208099b.png",
         "extra": null,
         "frontDesc": "",

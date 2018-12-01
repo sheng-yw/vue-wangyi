@@ -1,66 +1,20 @@
 <template>
   <div>
-    <div class="home-header">
-      <Header/>
-      <div class="nav-wrap">
-        <ul class="nav" ref="ulScroll">
-          <li><a href="javascript:;" class="active">推荐</a></li>
-          <li><a href="javascript:;">家居</a></li>
-          <li><a href="javascript:;">鞋包配饰</a></li>
-          <li><a href="javascript:;">服装</a></li>
-          <li><a href="javascript:;">电器</a></li>
-          <li><a href="javascript:;">洗护</a></li>
-          <li><a href="javascript:;">饮食</a></li>
-          <li><a href="javascript:;">餐具</a></li>
-          <li><a href="javascript:;">婴童</a></li>
-          <li><a href="javascript:;">文体</a></li>
-          <li><a href="javascript:;">特色区</a></li>
-          <li><a href="javascript:;"></a></li>
-        </ul>
-      </div>
-      <div class="nav-right-pull-down">
-        <span></span>
-      </div>
-    </div>
+    <Nav />
     <section class="wrap">
-      <div class="container" style="height: 10000px;">
-        <div class="swiper-container">
-          <div class="swiper-wrapper">
-            <div class="swiper-slide"><a href="javascript:;"><a href="javascript:;"><img class="swiper-slide" src="https://yanxuan.nosdn.127.net/72d052bfced137a39f0680174f2a709f.jpg" alt=""></a></a></div>
-            <div class="swiper-slide"><a href="javascript:;"><img class="swiper-slide" src="https://yanxuan.nosdn.127.net/72d052bfced137a39f0680174f2a709f.jpg" alt=""></a></div>
-            <div class="swiper-slide"><a href="javascript:;"><img class="swiper-slide" src="https://yanxuan.nosdn.127.net/72d052bfced137a39f0680174f2a709f.jpg" alt=""></a></div>
-            <div class="swiper-slide"><a href="javascript:;"><img class="swiper-slide" src="https://yanxuan.nosdn.127.net/72d052bfced137a39f0680174f2a709f.jpg" alt=""></a></div>
-            <div class="swiper-slide"><a href="javascript:;"><img class="swiper-slide" src="https://yanxuan.nosdn.127.net/72d052bfced137a39f0680174f2a709f.jpg" alt=""></a></div>
-            <div class="swiper-slide"><a href="javascript:;"><img class="swiper-slide" src="https://yanxuan.nosdn.127.net/72d052bfced137a39f0680174f2a709f.jpg" alt=""></a></div>
-            <div class="swiper-slide"><a href="javascript:;"><img class="swiper-slide" src="https://yanxuan.nosdn.127.net/72d052bfced137a39f0680174f2a709f.jpg" alt=""></a></div>
-            <div class="swiper-slide"><a href="javascript:;"><img class="swiper-slide" src="https://yanxuan.nosdn.127.net/72d052bfced137a39f0680174f2a709f.jpg" alt=""></a></div>
-          </div>
-          <!-- Add Pagination -->
-          <div class="swiper-pagination"></div>
-        </div>
+      <div class="container" >
+        <Banner />
         <div class="wy-slogan-info">
           <ul>
-            <li>
+            <li v-for="(item, index) in policyDescList" :key="index">
               <a href="javascript:;">
                 <i></i>
-                <span>网易自营品牌</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <i></i>
-                <span>30天无忧退货</span>
-              </a>
-            </li>
-            <li>
-              <a href="javascript:;">
-                <i></i>
-                <span>48小时快速退款</span>
+                <span>{{item.desc}}</span>
               </a>
             </li>
           </ul>
         </div>
-        <div class="split-color"></div>
+        <Split/>
         <div class="new-user-welfare">
           <h2>— 新人专享礼 —</h2>
           <div class="welfare-wrap">
@@ -99,32 +53,65 @@
             </div>
           </div>
         </div>
-        <div class="split-color"></div>
-        <div class="direct-supply">
-          <div class="direct-title">
-            <p>品牌制造商直供</p>
-            <span>更多></span>
+        <Split/>
+        <DirectSupply/>
+        <Split/>
+        <div class="new-shop">
+
+          <a href="javascript:;">
+            <p>新品首发</p>
+            <span>查看全部></span>
+          </a>
+        </div>
+        <GoodsNavList name="nav1" :goodsNavList="newGoodsList"/>
+        <Split/>
+        <div class="new-shop popularity">
+
+          <a href="javascript:;">
+            <p>人气推荐.好物精选</p>
+            <span>查看全部></span>
+          </a>
+        </div>
+        <GoodsNavList name="nav2" :goodsNavList="popularList"/>
+        <Split/>
+        <div class="good-flash-sale">
+          <div class="flash-left">
+            <p>严选限时购</p>
+            <p><span>{{hour<10? '0'+hour : hour}}</span>:
+              <span>{{minute<10? '0'+ minute: minute}}</span>:
+              <span>{{second<10? '0'+second:second }}</span></p>
+            <p>下一场22:0开始</p>
           </div>
-          <div class="direct-list">
-            <a class="direct-item" href="javascript:;">
-              <p>海外制造商</p>
-              <span>9.9元起</span>
-            </a>
-            <a class="direct-item" href="javascript:;">
-              <p>海外制造商</p>
-              <span>9.9元起</span>
-            </a>
-            <a class="direct-item" href="javascript:;">
-              <p>海外制造商</p>
-              <span>9.9元起</span>
-            </a>
-            <a class="direct-item" href="javascript:;">
-              <p>海外制造商</p>
-              <span>9.9元起</span>
-            </a>
+          <div class="flash-right">
+            <img src="http://yanxuan.nosdn.127.net/969d44f72fa4453b0ccc71799ec83335.png" alt="">
+            <div class="discounts">
+              <p>￥54 <br>￥68</p>
+            </div>
           </div>
         </div>
-        <div class="split-color"></div>
+        <Split/>
+        <div class="welfare-service">
+          <a href="javascript:;">
+            <img src="../../../static/img/swlfare-service.jpg" alt="">
+          </a>
+        </div>
+        <Split/>
+        <Selection/>
+        <Split/>
+        <div v-for="(item) in goodTypes" :key="item.id">
+          <GoodsList :goodType="item"/>
+          <Split/>
+        </div>
+        <footer class="home-footer">
+          <div class="footer-button">
+            <a href="javascript:;">下载app</a>
+            <span class="span-split"></span>
+            <a href="javascript:;">电脑版</a>
+
+          </div>
+          <p>网易公司版权所有 © 1997-2018</p>
+          <p>食品经营许可证：JY13301080111719</p>
+        </footer>
       </div>
     </section>
   </div>
@@ -132,75 +119,80 @@
 
 <script>
   import BScroll from 'better-scroll'
-  import Swiper from 'swiper'
 
-  import Header from '../../components/header/Header.vue'
+  import Nav from '../../components/home/nav/Nav.vue'
+  import Banner from '../../components/home/banner/Banner.vue'
+  import Split from '../../components/home/split/Split.vue'
+  import DirectSupply from '../../components/home/direct-supply/DirectSupply.vue'
+  import GoodsNavList from '../../components/home/goods-nav-list/GoodsNavList.vue'
+  import Selection from '../../components/home/selection/Selection.vue'
+  import GoodsList from '../../components/home/goods-list/GoodsList.vue'
+
   export default {
+    data () {
+      return {
+        newGoodsList: [],  //新品首发
+        popularList: [],   //人气推荐
+        goodTypes: [],
+        policyDescList: [],
+        hour:2,
+        minute: 43,
+        second: 56
+      }
+    },
     async mounted () {
-      // let lis = this.$refs.ulScroll.children;
-      // const width = Array.prototype.slice.call(lis).reduce( (pre, current) => pre + current.offsetWidth,0)
-      // this.$refs.ulScroll.style.width = width + 'px';
-      new BScroll('.nav-wrap',{
-        scrollX: true
-      })
-      new BScroll('.wrap',{
-        scrollY: true
-      })
-      var swiper = new Swiper('.swiper-container', {
-        pagination: {
-          el: '.swiper-pagination',
-        },
-      });
+      const {newItemNewUserList, popularItemList, cateList, policyDescList} = await this.$store.dispatch('getHomeDate');
+      this.newGoodsList = newItemNewUserList;
+      this.popularList = popularItemList;
+      this.goodTypes =cateList;
+      this.policyDescList = policyDescList;
+      setInterval(()=>{
+        this.second --;
+        if (this.second <=0){
+          this.second = 59;
+          this.minute --;
+        }
+        if (this.minute<=0){
+          this.minute = 59;
+          this.hour --;
+        }
+        if (this.hour <= 0) {
+          this.hour=0;
+        }
+      },1000)
+    },
+    watch: {
+      goodTypes () {
+        this.$nextTick(()=>{
+          new BScroll('.wrap',{
+            scrollY: true
+          })
+        });
+      }
     },
     components: {
-      Header
+      Nav,
+      Banner,
+      Split,
+      DirectSupply,
+      GoodsNavList,
+      Selection,
+      GoodsList
     }
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus" scoped>
+<style lang="stylus" rel="stylesheet/stylus" >
   @import "swiper/dist/css/swiper.min.css"
   @import "../../common/stylus/mixins.styl"
-  .home-header
-    padding-top 2rem
-    position relative
-    z-index 10
-    background #fff
-    .nav
-      white-space nowrap
-      height 1.3rem
-      width 12*2.7 rem
-      font-size 0
-      li
-        display inline-block
-        width 2.7rem
-        font-size .6rem
-        text-align: center
-        height 100%
-        vertical-align middle
-        a
-          display inline-block
-          padding 0 .2rem
-          height 1.2rem
-          line-height 1rem
-          &.active
-            border-bottom .1rem solid #b4282d
-            color: #b4282d
-    .nav-right-pull-down
-      width 2rem
-      position absolute
-      right 0
-      top 2rem
-      background white
-      height 1.3rem
-    span
-      width .9rem
-      height .9rem
-      display block
-      margin 0 auto
-      background-image url("../../../static/img/pull-down.png")
-      background-repeat no-repeat
-      background-size .8rem .8rem
+  .swiper-pagination-bullet
+    width .8rem
+    height 5px;
+    border-radius 10px 50%
+  .good-price
+    font-size .6rem
+    color darkred
+
   .wrap
     position absolute
     top 3.3rem
@@ -210,10 +202,7 @@
     .split
       width 100%
       height .3rem
-    .split-color
-      background #f4f4f4
-      width 100%
-      height .5rem
+
     .wy-slogan-info
       width 100%
       height 1.5rem
@@ -321,46 +310,101 @@
               padding 0 .2rem
               background #CBB693
               color: #fff
-    .direct-supply
-      padding .5rem
-      .direct-title
-        height 1rem
-        line-height 1rem
-        p
-          float left
-          font-size .8rem
+
+    .new-shop
+      &.popularity
+        background #FEF7E3
+        color: #C9B896
         span
-          float right
+          background #F4E9CB
+      height 7rem;
+      background #EEF5FC
+      text-align: center
+      a
+        display inline-block
+        margin-top 2.5rem
+        p
+          font-size .9rem
+        span
+          margin-top .4rem
           font-size .6rem
+          display inline-block
+          width 6rem
+          height 1rem
+          line-height 1rem
+          background #D8E5F1
 
-      .direct-list
-        padding-top  1rem
-        height 12.8rem
-        .direct-item
-          float left
-          width 49.5%
-          height 49%
-          background lemonchiffon
-          background-image url("../../../static/img/bg-1.jpg")
-          background-repeat no-repeat
-          background-size 100% 100%
-          text-align: center
-          padding-top .4rem
-          color black
-          &:nth-child(odd){
-            border-right 2px solid #fff
-          }
-          &:nth-child(1){
-            border-bottom 2px solid #fff
-          }
-          &:nth-child(2){
-            border-bottom 2px solid #fff
-          }
+
+    .good-flash-sale
+      height px2rem(340)
+      width px2rem(750)
+      padding px2rem(10) 0
+      .flash-left
+        float left
+        width 50%
+        text-align: center
+        p
+          margin-top .8rem
+          &:first-child
+            font-size .8rem
+          &:last-child
+            font-size .6rem
+        span
+          display inline-block
+          vertical-align middle
+          width px2rem(62)
+          height px2rem(56)
+          line-height  px2rem(56)
+          background #444
+          color: #fff
+          font-size .7rem
+      .flash-right
+        float right
+        width 50%
+        position relative
+        img
+          width 80%
+        .discounts
+          width 2rem
+          height 2rem
+          border-radius 50%
+          background #F59524
+          position absolute
+          bottom  .5rem
+          right 1.8rem
           p
-            font-size .7rem
+            padding .4rem 0 0
+            text-align: center
+            color #fff
+            font-size .6rem
+    .welfare-service
+      width px2rem(750)
+      height  px2rem(300)
+      img
+        width 100%
+        height 100%
 
-          span
-            font-size .5rem
 
+    .home-footer
+      height px2rem(256)
+      background #414141
+      .footer-button
+        padding 1.2rem 0 .8rem
+        text-align: center
+        a
+          font-size .7rem
+          display inline-block
+          padding .3rem
+          border 1px solid #fff
+          color #fff
+        .span-split
+          display inline-block
+          width 1rem
+          border none
 
+      p
+        color gray
+        text-align: center
+        padding-top .2rem
+        font-size .5rem
 </style>
