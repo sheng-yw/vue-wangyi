@@ -5,7 +5,7 @@
       <li class="good-item" v-for="(item,index) in goodType.itemList" :key="item.id" v-if="index<7">
         <a href="javascript:;">
           <div class="good-img">
-            <img :src="item.listPicUrl" alt="">
+            <img v-lazy="item.listPicUrl" alt="">
           </div>
           <p class="good-info">{{item.simpleDesc}}</p>
           <p class="good-name">{{item.name}}</p>

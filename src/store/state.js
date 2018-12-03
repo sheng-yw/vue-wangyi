@@ -7,6 +7,7 @@ export  default {
   goodTypes: [],
   policyDescList: [],
   typeList: [],
-  detail: {}
+  distinctionData: {},
+  shadeShow: true
 }
 

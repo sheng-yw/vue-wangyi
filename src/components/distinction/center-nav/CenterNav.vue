@@ -3,17 +3,11 @@
     <h2 class="title">十点一刻</h2>
     <div class="center-nav">
       <ul class="nav-wrap">
-        <li class="nav-item">
+        <li class="nav-item" v-for="(item,index) in centerNav" :key="index">
           <span>今日话题</span>
-          <p class="question">如果生命只剩一天</p>
-          <p class="choose">你会选择怎么度过</p>
-          <p class="topic">7人参与话题</p>
-        </li>
-        <li class="nav-item">
-          <span>今日话题</span>
-          <p class="question">如果生命只剩一天</p>
-          <p class="choose">你会选择怎么度过</p>
-          <p class="topic">7人参与话题</p>
+          <p class="question">{{item.title}}</p>
+          <p class="choose">{{item.desc}}</p>
+          <p class="topic">{{item.participantNum}}人参与话题</p>
         </li>
       </ul>
     </div>
@@ -24,10 +18,15 @@
   import BScroll from 'better-scroll'
 
   export default {
-    mounted(){
-      new BScroll('.center-nav',{
-        scrollX: true
-      })
+    props: {
+      centerNav: Array
+    },
+    watch: {
+      centerNav(){
+        new BScroll('.center-nav',{
+          scrollX: true
+        })
+      }
     }
   }
 </script>

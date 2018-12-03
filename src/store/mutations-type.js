@@ -7,7 +7,8 @@ export const UPDATE_BANNER_LIST = 'update_banner_list';
 export const UPDATE_DIRECT_SUPPLY_LIST = 'update_direct_supply_list';
 export const UPDATE_SELECTION_LIST = 'update_selection_list';
 export const UPDATE_TYPE_LIST = 'update_type_list';
-export const UPDATE_DETAIL = 'update_detail';
+export const UPDATE_DISTINCTION_DATA = 'update_distinction_data';
+export const UPDATE_SHADE_SHOW = 'update_shade_show';
 
 
 

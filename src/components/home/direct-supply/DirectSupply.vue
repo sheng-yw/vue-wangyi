@@ -20,9 +20,6 @@
     computed: {
       ...mapGetters(['homeDirectSupplyList'])
     },
-    mounted() {
-      console.log(this.homeDirectSupplyList);
-    }
   }
 </script>
 

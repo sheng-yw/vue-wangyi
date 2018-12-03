@@ -1,4 +1,4 @@
-import {reqDataHome, reqDataType} from '../api'
+import {reqDataHome, reqDataType, reqDistinctionData} from '../api'
 import {
   UPDATE_SELECTION_LIST,
   UPDATE_DIRECT_SUPPLY_LIST,
@@ -8,7 +8,8 @@ import {
   UPDATE_POPULAR_LIST,
   UPDATE_GOODS_LIST,
   UPDATE_GOOD_TYPE,
-  UPDATE_DETAIL
+  UPDATE_DISTINCTION_DATA,
+  UPDATE_SHADE_SHOW
 } from './mutations-type'
 
 export default {
@@ -29,8 +30,11 @@ export default {
     const {data} = await reqDataType();
     commit(UPDATE_TYPE_LIST,{typeList: data.categoryL1List})
   },
-  updateDetail ({commit,state}, id) {
-    const detail = state.typeList.find(item=> item.id === id*1)
-    commit(UPDATE_DETAIL,{detail})
+  async getDistinctionData ({commit}) {
+    const {data} = await reqDistinctionData();
+    commit(UPDATE_DISTINCTION_DATA, {distinctionData: data})
+  },
+  closeShade({commit}) {
+    commit(UPDATE_SHADE_SHOW)
   }
 }

@@ -2,19 +2,21 @@
   <div class="look-wrap">
     <h2 class="title">严选LOOK</h2>
     <a href="javascript:;">
-      <img class="logo" src="https://yanxuan.nosdn.127.net/426ea284025bb222b1a3fdb11a6adb3f.jpg" alt="">
+      <img class="logo" v-lazy="look.picUrl" alt="">
     </a>
     <div class="user">
-      <img class="user-avatar" src="https://yanxuan.nosdn.127.net/069037fe8c52e14c152d85074071fe43.jpg" alt="">
-      <span>a****0</span>
+      <img class="user-avatar" v-lazy="look.avatar" alt="">
+      <span>{{look.nickname}}</span>
     </div>
-    <p class="message">是我想要的风格。安装时除了有个螺丝孔有问题，后因有设备处理就很方便的解决问题了。大家看到都觉得很会买东西😀，希望严选多提供这类有品味的产品。</p>
+    <p class="message">{{look.content}}</p>
   </div>
 </template>
 
 <script>
   export default {
-    name: "Look"
+    props: {
+      look: Object
+    }
   }
 </script>
 

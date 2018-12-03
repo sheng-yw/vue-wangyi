@@ -1,35 +1,36 @@
 <template>
   <div class="recommend-wrap">
-    <h2 class="title">为你推荐</h2>
+    <h2 class="title">{{recomemend.name}}</h2>
+
     <div class="recommend-main">
-      <img src="https://yanxuan.nosdn.127.net/09d83c97c9963495e6518cfbec776b4c.jpg" alt="">
-      <p class="recommend-title"><span>如何做清新的白衣少年</span> <span>9.9元起</span></p>
-      <p class="recommend-info">少年感养成必备好物，每满149立减20元</p>
+      <img v-lazy="recomemend.Item[0].picUrl" alt="">
+      <p class="recommend-title"><span>{{recomemend.Item[0].title}}</span> <span>{{recomemend.Item[0].priceInfo}}元起</span></p>
+      <p class="recommend-info">{{recomemend.Item[0].subTitle}}</p>
     </div>
     <div class="split"></div>
     <div class="recommend-other">
       <div class="other-left">
         <div>
-          <p class="other-title">今年世界杯喝什么</p>
-          <p class="other-info">拉格啤酒8.5折特价，买即赠小龙虾优惠券</p>
+          <p class="other-title">{{recomemend.Item[1].title}}</p>
+          <p class="other-info">{{recomemend.Item[1].subTitle}}</p>
         </div>
       </div>
       <div class="other-right">
-        <img src="https://yanxuan.nosdn.127.net/7af712a2e7af35c752a45ab1451c33a2.jpg" alt="">
-        <span>丁磊的好货推荐</span>
+        <img v-lazy="recomemend.Item[1].picUrl" alt="">
+        <span>{{recomemend.Item[1].typeName}}</span>
       </div>
     </div>
     <div class="split"></div>
     <div class="recommend-other">
       <div class="other-left">
         <div>
-          <p class="other-title">今年世界杯喝什么</p>
-          <p class="other-info">拉格啤酒8.5折特价，买即赠小龙虾优惠券</p>
+          <p class="other-title">{{recomemend.Item[2].title}}</p>
+          <p class="other-info">{{recomemend.Item[2].subTitle}}</p>
         </div>
       </div>
       <div class="other-right">
-        <img src="https://yanxuan.nosdn.127.net/7af712a2e7af35c752a45ab1451c33a2.jpg" alt="">
-        <span>丁磊的好货推荐</span>
+        <img v-lazy="recomemend.Item[2].picUrl" alt="">
+        <span>{{recomemend.Item[2].typeName}}</span>
       </div>
     </div>
   </div>
@@ -37,7 +38,9 @@
 
 <script>
   export default {
-
+    props: {
+      recomemend: Object
+    }
   }
 </script>
 
@@ -90,10 +93,12 @@
           flex-direction column
           justify-content: center;/*水平居中*/
           .other-title
+            width px2rem(338)
             font-size .8rem
             margin-bottom .5rem
+            ellipse()
           .other-info
-            width 80%
+            width px2rem(328)
             font-size .5rem
             ellipse()
             color gray

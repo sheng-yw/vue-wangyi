@@ -5,7 +5,7 @@
       <ul  ref="selectionUl">
         <li v-for="(item) in selectionList" :key="item.id">
           <a href="javascript:;">
-            <img :src="item.itemPicUrl" alt="">
+            <img v-lazy="item.itemPicUrl" alt="">
             <p><span>{{item.title}}</span> <span class="good-price">{{item.priceInfo}}元起</span></p>
             <p>{{item.subtitle}}</p>
           </a>

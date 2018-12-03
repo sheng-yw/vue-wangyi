@@ -57,7 +57,7 @@
     left 0
     width 100%
     height 2rem
-    z-index 10
+    z-index 5
     background #fff
     .footer-nav
       width 100%

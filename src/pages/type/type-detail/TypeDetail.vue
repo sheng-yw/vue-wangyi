@@ -1,14 +1,14 @@
 <template>
   <div class="right-wrap" ref="">
     <div class="detail" v-if="detail">
-      <img :src="detail.wapBannerUrl" alt="">
+      <img v-lazy="detail.wapBannerUrl" :key="detail.id" alt="">
       <div class="detail-content">
         <span >{{detail.name}}分类</span>
       </div>
       <ul class="detail-list">
         <li v-for="(item,index) in detail.subCateList" :key="index">
           <a href="javascript:;">
-            <img :src="item.wapBannerUrl" alt="">
+            <img v-lazy="item.wapBannerUrl" :key="item.id" alt="">
             <p>{{item.name}}</p>
           </a>
         </li>

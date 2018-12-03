@@ -1,5 +1,6 @@
 {
-  "banner": [{
+  "banner": [
+    {
     "avatar": "",
     "color": "",
     "commentSwitch": false,
@@ -104,7 +105,8 @@
     "type": -1,
     "typeName": ""
   }],
-  "column": [{
+  "column": [
+    {
     "articleCount": "316篇文章",
     "linkUrl": "",
     "picUrl": "https://yanxuan.nosdn.127.net/254e04f823354c67d765d68c4012b64e.png",
@@ -169,7 +171,8 @@
     "topicId": "0",
     "type": -1
   }],
-  "findMore": [{
+  "findMore": [
+    {
     "avatar": "",
     "color": "",
     "commentSwitch": false,
@@ -487,7 +490,8 @@
       "desc": null
     }]
   },
-  "tenfifteen": [{
+  "tenfifteen": [
+    {
     "desc": "你会选择怎么度过",
     "id": 192,
     "participantAvatar": [null, "http://yanxuan.nosdn.127.net/76f27e3e1319cea0f0bd220effbbd4c2", "https://yanxuan.nosdn.127.net/edb7f81b6262124a02de2a18c1da772c.jpg", null, null],

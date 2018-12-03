@@ -7,7 +7,8 @@ import {
   UPDATE_GOOD_TYPE,
   UPDATE_POLICY_DESC_LIST,
   UPDATE_POPULAR_LIST,
-  UPDATE_DETAIL
+  UPDATE_DISTINCTION_DATA,
+  UPDATE_SHADE_SHOW
 } from './mutations-type'
 export default {
   [UPDATE_BANNER_LIST] (state,{bannerList}) {
@@ -34,7 +35,10 @@ export default {
   [UPDATE_POLICY_DESC_LIST] (state, {policyDescList}){
     state.policyDescList = policyDescList
   },
-  [UPDATE_DETAIL] (state, {detail}){
-    state.detail = detail
+  [UPDATE_DISTINCTION_DATA] (state, {distinctionData}){
+    state.distinctionData = distinctionData
+  },
+  [UPDATE_SHADE_SHOW] (state){
+    state.shadeShow = false;
   }
 }

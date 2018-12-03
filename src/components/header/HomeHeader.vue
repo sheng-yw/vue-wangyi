@@ -5,8 +5,8 @@
     </div>
     <div class="header-center">
       <div>
-        <i class="ic"></i>
-        <span></span>
+        <i class="search"></i>
+        <span>搜索商品,共19661件商品</span>
       </div>
     </div>
     <div class="header-right">
@@ -23,6 +23,7 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  @import "../../../static/iconfont/iconfont.css"
   @import "http://at.alicdn.com/t/font_942450_cq06yburj8a.css"
   .header
     position: fixed;
@@ -52,20 +53,36 @@
     .header-center
       float left
       width 60%
+      font-size .6rem
       div
         width 100%
         height 100%
         background #ededed
         border-radius .3rem
+        display flex
+        align-items:center
+        i
+          margin-left 1rem
+          width .8rem
+          height  .8rem
+          background-image url("../../../static/img/search.png")
+          background-size 100% 100%
+          background-repeat no-repeat
+        span
+          color gray
     .header-right
       float right
       width 15%
+      display flex
+      align-items center
       a
-        width 60%
+        text-align: center
+        width 1.1rem
         display block
         margin 0 auto
+        color #b4282d
         border: 1px solid #b4282d
-        font-size .7rem
+        font-size .5rem
         padding .2rem
         border-radius .3rem
 

@@ -1,10 +1,14 @@
 import Vue from 'vue'
+import VueLazy from 'vue-lazyload'
 
 import './mock/mock'
 import App from './App.vue'
 import router from './router'
 import store from './store/store'
 
+Vue.use(VueLazy,{
+  loading:'../static/img/loading.gif'
+})
 new Vue({
   //渲染数据的区域
   el: '#app',

@@ -4,7 +4,7 @@
       <li class="goods-item" v-for="(good,index) in goodsNavList" :key="index">
         <a href="javascript:;">
           <div>
-            <img :src="good.primaryPicUrl" alt="">
+            <img v-lazy="good.primaryPicUrl" alt="">
           </div>
           <p class="good-name">{{good.name}}</p>
           <p class="good-info">{{good.simpleDesc}}</p>

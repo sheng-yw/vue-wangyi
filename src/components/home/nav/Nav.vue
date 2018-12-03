@@ -1,27 +1,36 @@
 <template>
-  <div class="home-header">
-    <Header/>
-    <div class="nav-wrap">
-      <ul class="nav" ref="ulScroll">
-        <li><a href="javascript:;" class="active">推荐</a></li>
-        <li><a href="javascript:;">家居</a></li>
-        <li><a href="javascript:;">鞋包配饰</a></li>
-        <li><a href="javascript:;">服装</a></li>
-        <li><a href="javascript:;">电器</a></li>
-        <li><a href="javascript:;">洗护</a></li>
-        <li><a href="javascript:;">饮食</a></li>
-        <li><a href="javascript:;">餐具</a></li>
-        <li><a href="javascript:;">婴童</a></li>
-        <li><a href="javascript:;">文体</a></li>
-        <li><a href="javascript:;">特色区</a></li>
-        <li><a href="javascript:;"></a></li>
-      </ul>
+  <div>
+    <div class="shade" v-show="isShow"></div>
+    <div class="home-header">
+      <Header/>
+      <div class="nav-wrap">
+        <ul v-show="!isShow" class="nav" ref="ulScroll">
+          <li><a href="javascript:;" :class="{active: currentIndex==0}" @click="changeActive(0)">推荐</a></li>
+          <li v-for="(item, index) in goodTypes" :key="index"
+              @click="changeActive(index+1)"
+          >
+            <a href="javascript:;" :class="{active: currentIndex===index+1}">{{item.name}}</a>
+          </li>
+          <li><a href="javascript:;"></a></li>
+        </ul>
+        <p v-show="isShow" class="all-item">全部频道</p>
+      </div>
+      <div class="nav-right-pull-down"  @click="toggleShow">
+        <span :class="{active: isShow}"></span>
+      </div>
+      <div v-show="isShow" class="nav-list">
+        <ul class="list" >
+          <li><a href="javascript:;" @click="changeActive(0)" :class="{active:currentIndex===0}">推荐</a></li>
+          <li v-for="(item, index) in goodTypes" :key="index"
+              @click="changeActive(index+1)"
+          >
+            <a href="javascript:;" :class="{active: currentIndex===index+1}">{{item.name}}</a>
+          </li>
+        </ul>
+      </div>
     </div>
-    <div class="nav-right-pull-down">
-      <span></span>
-    </div>
-
   </div>
+
 </template>
 
 <script>
@@ -29,10 +38,32 @@
 
   import Header from '../../header/HomeHeader.vue'
   export default {
+    data(){
+      return {
+        isShow: false,
+        currentIndex: 0
+      }
+    },
+    props: {
+      goodTypes: Array
+    },
     mounted() {
-      new BScroll('.nav-wrap',{
-        scrollX: true
-      })
+      if (!this.scroll){
+        this.scroll= new BScroll('.nav-wrap',{
+          scrollX: true
+        })
+      }
+    },
+    methods: {
+      toggleShow () {
+        this.isShow = !this.isShow;
+        if (!this.isShow) {
+          this.scroll.scrollToElement(this.$refs.ulScroll.children[this.currentIndex],100)
+        }
+      },
+      changeActive(index){
+        this.currentIndex = index;
+      }
     },
     components: {
       Header
@@ -41,6 +72,15 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+  @import "../../../common/stylus/mixins.styl"
+  .shade
+    position absolute
+    top 0
+    left  0
+    bottom  0
+    right  0
+    background rgba(0,0,0,.5)
+    z-index 10
   .home-header
     padding-top 2rem
     position relative
@@ -81,5 +121,43 @@
         background-image url("../../../../static/img/pull-down.png")
         background-repeat no-repeat
         background-size .8rem .8rem
+        transition transform 1s
+        transform: rotate(0deg)
+        &.active
+          transform: rotate(180deg)
 
+
+    .all-item
+      height 1.32rem
+      font-size .7rem
+      padding-left .5rem
+      color gray
+    .nav-list
+      background #fff
+      position absolute
+      top 3.3rem
+      left 0
+      height  px2rem(288)
+      .list
+        display flex
+        flex-wrap wrap
+        font-size .6rem
+        li
+          width px2rem(148)
+          height  px2rem(54)
+          margin 0 0 px2rem(40) px2rem(30)
+          background #f4f4f4
+          a
+            width 100%
+            height 100%
+            display flex
+            justify-content center
+            align-items  center
+            &.active
+              color #b4282d
+              border 1px solid #b4282d
+  /*.fade-enter-active, .fade-leave-active*/
+    /*transition  height  1s*/
+  /*.fade-enter, .fade-leave-to*/
+    /*height 0*/
 </style>

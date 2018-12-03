@@ -14,11 +14,17 @@ export default new VueRouter({
   routes: [
     {
       path:'/home',
-      component:Home
+      component:Home,
+      meta: {
+        isShow: true
+      }
     },
     {
       path:'/cart',
-      component:Cart
+      component:Cart,
+      meta: {
+        isShow: true
+      }
     },
     {
       path:'/type',
@@ -26,17 +32,29 @@ export default new VueRouter({
       children:[
         {
           path:'/type/detail/:id',
-          component: TypeDetail
+          component: TypeDetail,
+          meta: {
+            isShow: true
+          }
         }
-      ]
+      ],
+      meta: {
+        isShow: true
+      }
     },
     {
       path:'/personal',
-      component:Personal
+      component:Personal,
+      meta: {
+        isShow: false
+      }
     },
     {
       path:'/distinction',
-      component:Distinction
+      component:Distinction,
+      meta: {
+        isShow: true
+      }
     },
     {
       path:'/',

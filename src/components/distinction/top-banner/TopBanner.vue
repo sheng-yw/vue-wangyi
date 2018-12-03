@@ -2,24 +2,14 @@
   <div class="banner">
     <div class="swiper-container auto-nav ">
       <div class="swiper-wrapper nav-wrap">
-        <div class="swiper-slide nav-item">
+        <div class="swiper-slide nav-item" v-for="(item,index) in banner" :key="index">
           <a href="javascript:;">
             <div class="banner-content">
-              <span>严选推荐</span>
-              <div>换条让你贪恋的好毛巾</div>
-              <div>浴巾毛巾每满99元减15</div>
+              <span>{{item.subTitle}}</span>
+              <div>{{item.title}}</div>
+              <div>{{item.desc}}</div>
             </div>
-            <img src="https://yanxuan.nosdn.127.net/9c9bbc692ff2b98e729a67ecca003dff.jpg" alt="">
-          </a>
-        </div>
-        <div class="swiper-slide nav-item">
-          <a href="javascript:;">
-            <div class="banner-content">
-              <span>严选推荐</span>
-              <div>换条让你贪恋的好毛巾</div>
-              <div>浴巾毛巾每满99元减15</div>
-            </div>
-            <img src="https://yanxuan.nosdn.127.net/9c9bbc692ff2b98e729a67ecca003dff.jpg" alt="">
+            <img v-lazy="item.picUrl" alt="">
           </a>
         </div>
         <div class="swiper-slide nav-item empty-item">
@@ -35,51 +25,11 @@
     </div>
     <div class="swiper-container nav-recommend">
       <div class="swiper-wrapper recommend-list" ref="navDiv">
-        <div class="swiper-slide recommend-item">
+        <div class="swiper-slide recommend-item" v-for="(item,index) in tabColumn" :key="index">
           <a href="javascript:;">
-            <img src="https://yanxuan.nosdn.127.net/1662ac1fabbc2e495bdda39357a93d65.png" alt="">
-            <span class="title">316篇文章</span>
-            <p class="info">严选推荐</p>
-          </a>
-
-        </div>
-        <div class="swiper-slide recommend-item">
-          <a href="javascript:;">
-            <img src="https://yanxuan.nosdn.127.net/1662ac1fabbc2e495bdda39357a93d65.png" alt="">
-            <span class="title">316篇文章</span>
-            <p class="info">严选推荐</p>
-          </a>
-
-        </div>
-        <div class="swiper-slide recommend-item">
-          <a href="javascript:;">
-            <img src="https://yanxuan.nosdn.127.net/1662ac1fabbc2e495bdda39357a93d65.png" alt="">
-            <span class="title">316篇文章</span>
-            <p class="info">严选推荐</p>
-          </a>
-
-        </div>
-        <div class="swiper-slide recommend-item">
-          <a href="javascript:;">
-            <img src="https://yanxuan.nosdn.127.net/1662ac1fabbc2e495bdda39357a93d65.png" alt="">
-            <span class="title">316篇文章</span>
-            <p class="info">严选推荐</p>
-          </a>
-
-        </div>
-        <div class="swiper-slide recommend-item">
-          <a href="javascript:;">
-            <img src="https://yanxuan.nosdn.127.net/1662ac1fabbc2e495bdda39357a93d65.png" alt="">
-            <span class="title">316篇文章</span>
-            <p class="info">严选推荐</p>
-          </a>
-
-        </div>
-        <div class="swiper-slide recommend-item">
-          <a href="javascript:;">
-            <img src="https://yanxuan.nosdn.127.net/1662ac1fabbc2e495bdda39357a93d65.png" alt="">
-            <span class="title">316篇文章</span>
-            <p class="info">严选推荐</p>
+            <img v-lazy="item.picUrl" alt="">
+            <span class="title">{{item.articleCount}}</span>
+            <p class="info">{{item.title}}</p>
           </a>
 
         </div>
@@ -93,11 +43,15 @@
   import BScroll from 'better-scroll'
   import "swiper/dist/css/swiper.min.css"
   export default {
+    props:{
+      banner: Array,
+      tabColumn: Array
+    },
     mounted () {
       new Swiper('.auto-nav', {
         slidesPerView: 'auto',
         slidesOffsetBefore: 20,
-        // autoplay:true,
+        autoplay:true,
         loop: true
       });
       this.navWidth(this.$refs.navDiv);
@@ -110,7 +64,6 @@
         let lis = dom.children;
         //小数有误差？？？？？？
         const width = Array.prototype.slice.call(lis).reduce( (pre, current) => pre + current.offsetWidth + 1,0)
-        console.log(width);
         dom.style.width = width + 'px';
       }
     },
