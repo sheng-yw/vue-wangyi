@@ -294,7 +294,8 @@
       "level": null,
       "name": "个性专区",
       "showIndex": 7,
-      "subCateList": [{
+      "subCateList": [
+        {
         "bannerUrl": "http://yanxuan.nosdn.127.net/132b5abecaa0a12bba477902c531d2b1.png",
         "extra": null,
         "frontDesc": "",

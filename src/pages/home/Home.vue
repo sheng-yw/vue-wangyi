@@ -119,10 +119,11 @@
 
 <script>
   import BScroll from 'better-scroll'
+  import {mapState} from 'vuex'
 
   import Nav from '../../components/home/nav/Nav.vue'
   import Banner from '../../components/home/banner/Banner.vue'
-  import Split from '../../components/home/split/Split.vue'
+  import Split from '../../components/split/Split.vue'
   import DirectSupply from '../../components/home/direct-supply/DirectSupply.vue'
   import GoodsNavList from '../../components/home/goods-nav-list/GoodsNavList.vue'
   import Selection from '../../components/home/selection/Selection.vue'
@@ -131,21 +132,16 @@
   export default {
     data () {
       return {
-        newGoodsList: [],  //新品首发
-        popularList: [],   //人气推荐
-        goodTypes: [],
-        policyDescList: [],
         hour:2,
         minute: 43,
         second: 56
       }
     },
-    async mounted () {
-      const {newItemNewUserList, popularItemList, cateList, policyDescList} = await this.$store.dispatch('getHomeDate');
-      this.newGoodsList = newItemNewUserList;
-      this.popularList = popularItemList;
-      this.goodTypes =cateList;
-      this.policyDescList = policyDescList;
+    computed: {
+      ...mapState(['newGoodsList', 'popularList', 'goodTypes', 'policyDescList'])
+    },
+    mounted () {
+      this.$store.dispatch('getHomeDate',this.createScroll);
       setInterval(()=>{
         this.second --;
         if (this.second <=0){
@@ -161,8 +157,8 @@
         }
       },1000)
     },
-    watch: {
-      goodTypes () {
+    methods: {
+      createScroll(){
         this.$nextTick(()=>{
           new BScroll('.wrap',{
             scrollY: true

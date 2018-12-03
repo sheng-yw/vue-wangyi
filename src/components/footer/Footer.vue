@@ -9,7 +9,7 @@
         </a>
       </li>
       <li>
-        <a href="javascript:;"class="type":class="{active: $route.fullPath==='/type'}"  @click="gotoRouter('/type')">
+        <a href="javascript:;"class="type":class="{active: $route.fullPath.indexOf('/type') !== -1}"  @click="gotoRouter('/type')">
         <i ></i>
         <span>分类</span>
         </a>

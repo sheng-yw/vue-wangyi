@@ -6,6 +6,7 @@ import Cart from '../pages/cart/Cart.vue'
 import Personal from '../pages/personal/Personal.vue'
 import Type from '../pages/type/Type.vue'
 import Distinction from '../pages/distinction/Distinction.vue'
+import TypeDetail from '../pages/type/type-detail/TypeDetail.vue'
 
 Vue.use(VueRouter);
 export default new VueRouter({
@@ -21,7 +22,13 @@ export default new VueRouter({
     },
     {
       path:'/type',
-      component:Type
+      component:Type,
+      children:[
+        {
+          path:'/type/detail/:id',
+          component: TypeDetail
+        }
+      ]
     },
     {
       path:'/personal',

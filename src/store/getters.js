@@ -5,7 +5,5 @@ export default {
       return index<4
     })
   },
-  leftTypeData (state) {
-    return state.typeList[0]
-  }
+
 }

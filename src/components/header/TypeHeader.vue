@@ -23,6 +23,7 @@
     left 0
     padding 0.35rem 0
     background #fff
+    z-index 10
     .content
       width 90%
       height 1.3rem

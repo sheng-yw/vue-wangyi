@@ -2,6 +2,11 @@ export  default {
   bannerList: [],
   directSupplyList: [],
   selectionList: [],
-  typeList: []
-
+  newGoodsList: [],
+  popularList: [],
+  goodTypes: [],
+  policyDescList: [],
+  typeList: [],
+  detail: {}
 }
+
